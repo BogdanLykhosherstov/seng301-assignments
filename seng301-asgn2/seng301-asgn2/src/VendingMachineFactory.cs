@@ -27,18 +27,20 @@ public class VendingMachineFactory : IVendingMachineFactory {
     public void LoadCoins(int vmIndex, int coinKindIndex, List<Coin> coins) {
         // TODO: Implement
         VendingMachine dummyVm = vendingMachines[vmIndex];
-        dummyVm.CoinReceptacle.LoadCoins(coins);
-        //getting the right coin rack from VM and then using its method to load coins
-        //dummyVm.GetCoinRackForCoinKind(coinKindIndex).LoadCoins(coins);
 
+        //getting the right coin rack from VM and then using its method to load coins
+        //1. First the value of the coin
+        int kind = dummyVm.GetCoinKindForCoinRack(coinKindIndex);
+        //2. Then we access the coin rack by value and load stuff into there
+        (dummyVm.GetCoinRackForCoinKind(kind)).LoadCoins(coins);
         vendingMachines[vmIndex] = dummyVm;
     }
 
     public void LoadPops(int vmIndex, int popKindIndex, List<PopCan> pops) {
         // TODO: Implement
         VendingMachine dummyVm = vendingMachines[vmIndex];
-
-
+        //Same procedure as with the coin rack
+        dummyVm.PopCanRacks[popKindIndex].LoadPops(pops);
 
         vendingMachines[vmIndex] = dummyVm;
     }
