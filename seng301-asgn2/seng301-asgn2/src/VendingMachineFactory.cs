@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Frontend2;
 using Frontend2.Hardware;
 
-
+//nice meme
 public class VendingMachineFactory : IVendingMachineFactory {
 
     List<VendingMachine> vendingMachines = new List<VendingMachine>();
