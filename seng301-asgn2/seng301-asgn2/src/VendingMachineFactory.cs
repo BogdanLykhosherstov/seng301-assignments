@@ -51,8 +51,9 @@ public class VendingMachineFactory : IVendingMachineFactory {
         EHandler test = new EHandler(dummyVm);
         //1. Goto Coin slot -> Coin rack -> Appropriate slot based on response
         //2. Sub and then unsub the events after youre done
-        dummyVm.CoinReceptacle.CoinAdded += new EventHandler<CoinEventArgs>(test.coinAdded);
-        dummyVm.CoinReceptacle.ReceptacleFull += new EventHandler(test.receptacleFull);
+
+        dummyVm.CoinReceptacle.CoinAdded += new EventHandler<CoinEventArgs>(test.coinAddedReceptacle);
+        dummyVm.StorageBin.CoinAdded += new EventHandler<CoinEventArgs>(test.coinAddedStorageBin);
         dummyVm.CoinSlot.AddCoin(coin);
 
 

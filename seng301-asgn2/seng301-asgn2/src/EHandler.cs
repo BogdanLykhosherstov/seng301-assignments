@@ -9,24 +9,23 @@ using Frontend2.Hardware;
 public class EHandler
 {
     VendingMachine dummyVm;
-    bool receptacleFullFlag = false;
+   
     public EHandler(VendingMachine dummyVm)
     {
         this.dummyVm = dummyVm;
     }
-    public void coinAdded(object sender, CoinEventArgs e)
+    public void coinAddedReceptacle(object sender, CoinEventArgs e)
     {
-        if (!receptacleFullFlag)
-        {
-            Console.WriteLine("Coin: " + e.Coin + " Accepted");
+        Console.WriteLine("Coin: " + e.Coin + " Put in Receptacle");
             dummyVm.CoinReceptacle.StoreCoins();
-        }
         
     }
-    public void receptacleFull(object sender, EventArgs e)
+    public void coinAddedStorageBin(object sender, CoinEventArgs e)
     {
-        this.receptacleFullFlag = true;
+        Console.WriteLine("Coin: " + e.Coin + " Put in Storage");
+        dummyVm.StorageBin.StoreCoins();
     }
+
 
 
 
