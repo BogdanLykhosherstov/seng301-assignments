@@ -49,6 +49,7 @@ public class ScriptProcessor {
             try {
                 var scriptParser = new ScriptProcessor(new StreamReader(File.OpenRead(script)), new VendingMachineFactory());
                 scriptParser.Parse();
+
             }
             catch {
                 pass = false;

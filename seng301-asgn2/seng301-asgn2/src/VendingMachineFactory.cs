@@ -48,7 +48,12 @@ public class VendingMachineFactory : IVendingMachineFactory {
     public void InsertCoin(int vmIndex, Coin coin) {
         // TODO: Implement
         VendingMachine dummyVm = vendingMachines[vmIndex];
-
+        EHandler test = new EHandler(dummyVm);
+        //1. Goto Coin slot -> Coin rack -> Appropriate slot based on response
+        //2. Sub and then unsub the events after youre done
+        dummyVm.CoinReceptacle.CoinAdded += new EventHandler<CoinEventArgs>(test.coinAdded);
+        dummyVm.CoinReceptacle.ReceptacleFull += new EventHandler(test.receptacleFull);
+        dummyVm.CoinSlot.AddCoin(coin);
 
 
         vendingMachines[vmIndex] = dummyVm;
