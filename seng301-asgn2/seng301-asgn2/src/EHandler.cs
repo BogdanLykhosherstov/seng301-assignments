@@ -8,24 +8,30 @@ using Frontend2.Hardware;
 
 public class EHandler
 {
+    VendingMachineFactory vendingMachineFactory;
     VendingMachine dummyVm;
-    public EHandler(VendingMachine dummyVm)
+    public EHandler(VendingMachine dummyVm, VendingMachineFactory vendingMachineFactory)
     {
+        this.vendingMachineFactory = vendingMachineFactory;
         this.dummyVm = dummyVm;
     }
     public void coinAddedReceptacle(object sender, CoinEventArgs e)
     {
         
-            Console.WriteLine("Coin: " + e.Coin + " Accepted");
-            dummyVm.CoinReceptacle.StoreCoins();
+            Console.WriteLine("Coin: " + e.Coin + " Accepted for coin receptacle");
+            vendingMachineFactory.coinsEntered.Add(e.Coin);
         
         
     }
     public void coinAddedStorageBin(object sender, CoinEventArgs e)
     {
-        Console.WriteLine("Coin: " + e.Coin + " Accepted");
+        Console.WriteLine("Coin: " + e.Coin + " Accepted for storage bin");
 
-        dummyVm.StorageBin.StoreCoins();
+        
+    }
+    public void printButtonPressed(object sender, EventArgs e)
+    {
+        Console.WriteLine("Button pressed");
     }
 
 
